@@ -14,9 +14,13 @@ public class App {
     public static void main( String[] args ){
 
         Employee employee = new Employee();
-//        employee.readEmployeeFile();
+        HashMap<String,EmployeeManager> hash = employee.readEmployeeFile();
+        System.out.println(hash.size());
 
-        DAO dao = new DAO();
-        dao.runSQLQuery(employee.readEmployeeFile());
+
+//        DAO dao = new DAO();
+//        dao.runSQLQuery(employee.readEmployeeFile());
+
+
     }
 }
