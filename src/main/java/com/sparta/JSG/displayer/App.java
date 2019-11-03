@@ -6,10 +6,7 @@ import com.sparta.JSG.mySQLConnection.DAO;
 
 import java.util.HashMap;
 
-/**
- * Hello world!
- *
- */
+
 public class App {
     public static void main( String[] args ){
 
@@ -18,8 +15,8 @@ public class App {
         System.out.println(hash.size());
 
 
-//        DAO dao = new DAO();
-//        dao.runSQLQuery(employee.readEmployeeFile());
+        DAO dao = new DAO();
+        dao.runSQLQuery(employee.readEmployeeFile());
 
 
     }

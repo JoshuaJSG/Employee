@@ -13,7 +13,7 @@ public class Employee {
     private EmployeeManager emptyConstructor;
     private HashMap<String,EmployeeManager> hashMap;
     private HashMap<String,EmployeeManager> duplicateHashMap;
-    private static final String PATH = "resources/EmployeeRecords.csv";
+    private static final String PATH = "resources/testResources.csv";
 
 
     public HashMap<String, EmployeeManager> readEmployeeFile() {
@@ -34,29 +34,29 @@ public class Employee {
                             LocalDate.parse(employeeData[7],dateTimeFormatter),LocalDate.parse(employeeData[8],dateTimeFormatter),Double.parseDouble(employeeData[9])));
 
             }
-
             bufferedReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        deleteDuplicates();
         return hashMap;
     }
 
 
-//    public void deleteDuplicates(){
-//        HashMap<String, EmployeeManager> duplicateHashMap = readEmployeeFile();
-//        boolean existsDuplicated = true;
-//        while (existsDuplicated){
-//            for (EmployeeManager id: duplicateHashMap.values()) {
-//                for (EmployeeManager duplicateId: duplicateHashMap.values()) {
-//                    if (id.getEmpId() == duplicateId.getEmpId()){
-//                        duplicateHashMap.remove(duplicateId);
-//                    }
-//                }
-//            }
-//        }
-//    }
+    public void deleteDuplicates(){
+        HashMap<String, EmployeeManager> duplicateHashMap = readEmployeeFile();
+        boolean existsDuplicated = true;
+        while (existsDuplicated){
+            for (EmployeeManager id: duplicateHashMap.values()) {
+                for (EmployeeManager duplicateId: duplicateHashMap.values()) {
+                    if (id.getEmpId() == duplicateId.getEmpId()){
+                        duplicateHashMap.remove(duplicateId);
+                    }
+                }
+            }
+        }
+    }
 
 }
