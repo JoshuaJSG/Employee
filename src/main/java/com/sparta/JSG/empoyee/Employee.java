@@ -1,6 +1,7 @@
 package com.sparta.JSG.empoyee;
 
 import com.sparta.JSG.manager.EmployeeManager;
+import com.sparta.JSG.mySQLConnection.DAO;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -9,8 +10,8 @@ import java.util.*;
 
 //make this application multi-threaded to improve performance through the use of threads.
 //thyme leaf - look at it for front end web page.
-public class Employee {
-    private EmployeeManager emptyConstructor;
+public class Employee implements Runnable {
+    DAO dao;
     private HashMap<String,EmployeeManager> hashMap;
     private HashMap<String,EmployeeManager> duplicateHashMap;
     private static final String PATH = "resources/testResources.csv";
@@ -59,4 +60,11 @@ public class Employee {
         }
     }
 
+    @Override
+    public void run() {
+//        readEmployeeFile();
+        HashMap<String, EmployeeManager> map = readEmployeeFile();
+        Object[] employeesInMap = map.entrySet().toArray();
+        dao.runSQLQuery(employeesInMap);
+    }
 }

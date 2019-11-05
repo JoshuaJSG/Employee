@@ -20,6 +20,7 @@ public class EmployeeManager {
     public EmployeeManager(){
 
     }
+
     public EmployeeManager(int empId, String namePrefix, String firstName, String middleInitial, String lastName, String gender, String email, LocalDate dateOfBirth, LocalDate dateOfJoining, double salary) {
         this.empId = empId;
         this.namePrefix = namePrefix;
