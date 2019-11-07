@@ -10,11 +10,11 @@ import java.util.*;
 
 //make this application multi-threaded to improve performance through the use of threads.
 //thyme leaf - look at it for front end web page.
-public class Employee implements Runnable {
-    DAO dao;
+public class Employee {
+    DAO dao = null;
     private HashMap<String,EmployeeManager> hashMap;
     private HashMap<String,EmployeeManager> duplicateHashMap;
-    private static final String PATH = "resources/testResources.csv";
+    private static final String PATH = "resources/EmployeeRecords.csv";
 
 
     public HashMap<String, EmployeeManager> readEmployeeFile() {
@@ -46,6 +46,9 @@ public class Employee implements Runnable {
     }
 
 
+
+
+
     public void deleteDuplicates(){
         HashMap<String, EmployeeManager> duplicateHashMap = readEmployeeFile();
         boolean existsDuplicated = true;
@@ -60,11 +63,4 @@ public class Employee implements Runnable {
         }
     }
 
-    @Override
-    public void run() {
-//        readEmployeeFile();
-        HashMap<String, EmployeeManager> map = readEmployeeFile();
-        Object[] employeesInMap = map.entrySet().toArray();
-        dao.runSQLQuery(employeesInMap);
-    }
 }
